@@ -1,0 +1,14 @@
+server:
+  port: 9000
+  
+spring: 
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.98.72.31:3306/prj9?characterEncoding=UTF-8
+    username: prj9
+    password: #@$*()#$
+    
