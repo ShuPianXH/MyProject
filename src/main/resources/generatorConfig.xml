@@ -4,9 +4,9 @@
     <classPathEntry location="D:\Java\Tools\mysql-connector-java-5.1.48-bin.jar"/>
   <context id="context1" >
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://39.98.72.31:3306/prj9" userId="prj9" password="#@$*()#$" />
-    <javaModelGenerator targetPackage="com.woniuxy.pojo" targetProject="Myproject" ></javaModelGenerator>
-    <sqlMapGenerator targetPackage="com.woniuxy.mapper" targetProject="Myproject" ></sqlMapGenerator>
-    <javaClientGenerator targetPackage="com.woniuxy.mapper" targetProject="Myproject" type="XMLMAPPER" />
+    <javaModelGenerator targetPackage="com.woniuxy.pojo" targetProject=".\src\main\java" ></javaModelGenerator>
+    <sqlMapGenerator targetPackage="com.woniuxy.mapper" targetProject=".\src\main\java" ></sqlMapGenerator>
+    <javaClientGenerator targetPackage="com.woniuxy.mapper" targetProject=".\src\main\java" type="XMLMAPPER" />
     <table schema="" tableName="jianda" ></table>
     <table schema="" tableName="multiple_choice" ></table>
     <table schema="" tableName="question_type" ></table>
