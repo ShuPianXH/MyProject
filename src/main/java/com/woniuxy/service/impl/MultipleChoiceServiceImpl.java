@@ -17,9 +17,15 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 	private MultipleChoiceMapper multipleChoiceMapper;
 
 	@Override
-	public List findAll(Integer typeid, PageBean pageBean) {
+	public List findByTypename(String typename, PageBean pageBean) {
 		// TODO Auto-generated method stub
-		return multipleChoiceMapper.selectByExample(typeid, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+		return multipleChoiceMapper.selectByExample(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+	}
+
+	@Override
+	public List findAll(PageBean pageBean) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.selectByExample(new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
 	}
 
 }
