@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
-    <classPathEntry location="E:\mysql-connector-java-5.0.8-bin.jar"/>	
+    <classPathEntry location="D:\Java\Tools\mysql-connector-java-5.1.48-bin.jar"/>
   <context id="context1" >
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/prj" userId="root" password="" />
-    <javaModelGenerator targetPackage="com.woniuxy.entity" targetProject="prj" ></javaModelGenerator>
-    <sqlMapGenerator targetPackage="com.woniuxy.mapper" targetProject="prj" ></sqlMapGenerator>
-    <javaClientGenerator targetPackage="com.woniuxy.mapper" targetProject="prj" type="XMLMAPPER" />
-    <table schema="" tableName="province" ></table>
-    <table schema="" tableName="city" ></table>
-    <table schema="" tableName="zone" ></table>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://39.98.72.31:3306/prj9" userId="prj9" password="#@$*()#$" />
+    <javaModelGenerator targetPackage="com.woniuxy.pojo" targetProject="Myproject" ></javaModelGenerator>
+    <sqlMapGenerator targetPackage="com.woniuxy.mapper" targetProject="Myproject" ></sqlMapGenerator>
+    <javaClientGenerator targetPackage="com.woniuxy.mapper" targetProject="Myproject" type="XMLMAPPER" />
+    <table schema="" tableName="jianda" ></table>
+    <table schema="" tableName="multiple_choice" ></table>
+    <table schema="" tableName="question_type" ></table>
+    <table schema="" tableName="test_questions" ></table>
+    <table schema="" tableName="tiankong" ></table>
+    <table schema="" tableName="TrueorFalse" ></table>
   </context>
 </generatorConfiguration>
