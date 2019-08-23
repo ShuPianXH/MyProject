@@ -10,11 +10,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="layui/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
 </head>
-<script type="text/javascript" src="jquery-1.10.2.js"></script>
-<link rel="stylesheet" href="layui/css/layui.css">
-<script src="layui/layui.js"></script>
 <body class="layui-layout-body">
+
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">蜗牛考试系统</div>
@@ -54,7 +55,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">题库管理</a>
                     <dl class="layui-nav-child">
-                        <dd class="main_left a"><a data-src="select.html">新增试题</a></dd>
+                        <dd class="main_left a"><a data-src="pages/select.jsp">新增试题</a></dd>
                         <dd class="main_left a"><a data-src="javascript:;">查询试题</a></dd>
                         <dd class="main_left a"><a data-src="javascript:;">修改试题</a></dd>
                         <dd class="main_left a"><a data-src="javascript:;">删除试题</a></dd>
