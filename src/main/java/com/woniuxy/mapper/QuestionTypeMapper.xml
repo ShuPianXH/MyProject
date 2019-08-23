@@ -9,6 +9,7 @@
     -->
     <id column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="typename" jdbcType="VARCHAR" property="typename" />
+    <collection property="multiple_choices" column="typeid" select="com.woniuxy.pojo.MultipleChoice.findByTypeid"></collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
