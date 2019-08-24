@@ -13,6 +13,19 @@
     <result column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
+  
+  <select id="findByType" resultMap="BaseResultMap">
+  	select * from TrueorFalse t where t.typeid in(
+  		select typeid from question_type where typename=#{typename}
+  	)
+  </select>
+  
+  <select id="findByTypename" resultMap="BaseResultMap">
+  	select * from TrueorFalse t where t.test_question_id in(
+  		select test_question_id from test_questions where test_question_name=#{typename}
+  	)
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

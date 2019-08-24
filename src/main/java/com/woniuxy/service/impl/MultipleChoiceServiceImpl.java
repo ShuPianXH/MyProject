@@ -20,11 +20,12 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 	@Override
 	public List findByTypename(String typename, PageBean pageBean) {
 		// TODO Auto-generated method stub
-		return multipleChoiceMapper.selectByExample(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+		return multipleChoiceMapper.findByTypename(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
 	}
 
 	@Override
 	public List findAll(PageBean pageBean) {
+		
 		// TODO Auto-generated method stub
 		return multipleChoiceMapper.selectByExample(new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
 	}
@@ -51,6 +52,12 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 	public void update(MultipleChoice mc) {
 		// TODO Auto-generated method stub
 		multipleChoiceMapper.updateByPrimaryKey(mc);
+	}
+
+	@Override
+	public List<MultipleChoice> findByType(String typename, PageBean pageBean) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findByType(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
 	}
 
 }
