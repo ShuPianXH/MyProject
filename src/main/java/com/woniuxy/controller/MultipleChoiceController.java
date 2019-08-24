@@ -30,6 +30,7 @@ public class MultipleChoiceController {
 	
 	@RequestMapping("findAll")
 	public @ResponseBody Map findAll(PageBean pageBean) {
+		System.out.println("MultipleChoiceController.findAll()");
 		Map map = new HashMap<>();
 		map.put("list", multipleChoiceServiceImpl.findAll(pageBean));
 		return map;
