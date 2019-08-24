@@ -27,6 +27,13 @@ public class MultipleChoiceController {
 		return map;
 	}
 	
+	@RequestMapping("findByType")
+	public @ResponseBody Map findByType(String typename, PageBean pageBean) {
+		Map map = new HashMap();
+		map.put("list", multipleChoiceServiceImpl.findByType(typename, pageBean));
+		return map;
+	}
+	
 	@RequestMapping("findAll")
 	public @ResponseBody Map findAll(PageBean pageBean) {
 		System.out.println("MultipleChoiceController.findAll()");

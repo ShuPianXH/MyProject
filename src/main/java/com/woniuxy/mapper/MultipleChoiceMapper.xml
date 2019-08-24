@@ -18,9 +18,15 @@
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
   
-  <select id="findByTypeid" resultMap="BaseResultMap">
+  <select id="findByType" resultMap="BaseResultMap">
   	select * from multiple_choice m where m.typeid in(
   		select typeid from question_type where typename=#{typename}
+  	)
+  </select>
+  
+  <select id="findByTypename" resultMap="BaseResultMap">
+  	select * from multiple_choice m where m.test_question_id in(
+  		select test_question_id from test_questions where test_question_name=#{typename}
   	)
   </select>
   
