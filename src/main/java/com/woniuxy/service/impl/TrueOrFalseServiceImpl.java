@@ -4,14 +4,13 @@ import com.woniuxy.mapper.TrueorfalseMapper;
 import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.Trueorfalse;
 import com.woniuxy.service.ITrueOrFalseService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class TrueOrFalseServiceImpl implements ITrueOrFalseService {

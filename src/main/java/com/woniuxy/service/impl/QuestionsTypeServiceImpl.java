@@ -2,9 +2,10 @@ package com.woniuxy.service.impl;
 
 import com.woniuxy.pojo.QuestionType;
 import com.woniuxy.service.IQuestionTypeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class QuestionsTypeServiceImpl implements IQuestionTypeService {
     @Override
     public List<QuestionType> findAll() {

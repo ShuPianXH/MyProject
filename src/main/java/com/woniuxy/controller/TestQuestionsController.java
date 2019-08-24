@@ -15,44 +15,44 @@ import java.util.Map;
 @RequestMapping("TestQuestions")
 public class TestQuestionsController {
     @Resource
-    private ITestQusetionsService testQusetionsServiceImpl;
+    private ITestQusetionsService testQuestionsServiceImpl;
 
     @RequestMapping("findByZSD")//按知识点查找
     public @ResponseBody Map findByZSD(PageBean pageBean,String ZSD){
         Map map = new HashMap();
-        map.put("list",testQusetionsServiceImpl.findByZSD(pageBean,ZSD));
+        map.put("list",testQuestionsServiceImpl.findByZSD(pageBean,ZSD));
         return map;
     }
 
     @RequestMapping("findAll")
     public @ResponseBody Map fiindAll(PageBean pageBean){
         Map map = new HashMap();
-        map.put("list",testQusetionsServiceImpl.findAll(pageBean));
+        map.put("list",testQuestionsServiceImpl.findAll(pageBean));
         return map;
     }
 
     @RequestMapping("findOne")
     public @ResponseBody Map fiindOne(Integer testQuestionId){
         Map map = new HashMap();
-        map.put("list",testQusetionsServiceImpl.findOne(testQuestionId));
+        map.put("list",testQuestionsServiceImpl.findOne(testQuestionId));
         return map;
     }
 
     @RequestMapping("save")
     public String save(TestQuestions testQuestions){
-        testQusetionsServiceImpl.save(testQuestions);
+        testQuestionsServiceImpl.save(testQuestions);
         return "idex";
     }
 
     @RequestMapping("delete")
     public String delete(Integer testQuestionsId){
-        testQusetionsServiceImpl.delete(testQuestionsId);
+        testQuestionsServiceImpl.delete(testQuestionsId);
         return "idex";
     }
 
     @RequestMapping("update")
     public String update(TestQuestions testQuestions){
-        testQusetionsServiceImpl.update(testQuestions);
+        testQuestionsServiceImpl.update(testQuestions);
         return "idex";
     }
 

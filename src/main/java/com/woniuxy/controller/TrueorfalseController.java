@@ -14,7 +14,7 @@ import com.woniuxy.pojo.Trueorfalse;
 import com.woniuxy.service.ITrueOrFalseService;
 
 @Controller
-@RequestMapping("/trueOrFalse/")
+@RequestMapping("/tureOrFalse/")
 public class TrueorfalseController {
 	
 	@Resource
