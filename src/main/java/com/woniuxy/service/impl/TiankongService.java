@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.woniuxy.mapper.TiankongMapper;
+import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.Tiankong;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,10 @@ public class TiankongService implements ITiankongService {
 	@Resource
 	private TiankongMapper tiankongMapper;
 
+
 	@Override
-	public List<Tiankong> findAll() {
-		return tiankongMapper.selectByExample(null);
+	public List<Tiankong> findAll(PageBean pageBean) {
+		return null;
 	}
 
 	@Override
@@ -42,6 +44,11 @@ public class TiankongService implements ITiankongService {
 	public Tiankong findOne(Integer tiankongId) {
 		// TODO Auto-generated method stub
 		return tiankongMapper.selectByPrimaryKey(tiankongId);
+	}
+
+	@Override
+	public List<Tiankong> findByName(String tiankong, PageBean pageBean) {
+		return null;
 	}
 
 }

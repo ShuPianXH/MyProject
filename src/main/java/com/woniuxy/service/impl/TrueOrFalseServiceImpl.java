@@ -2,9 +2,10 @@ package com.woniuxy.service.impl;
 
 import com.woniuxy.pojo.Trueorfalse;
 import com.woniuxy.service.ITrueOrFalseService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
     @Override
     public List<Trueorfalse> findAll() {

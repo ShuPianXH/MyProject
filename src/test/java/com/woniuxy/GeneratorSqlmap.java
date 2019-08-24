@@ -1,5 +1,6 @@
 package com.woniuxy;
 
+import org.junit.Test;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GeneratorSqlmap {
-	
+	@Test
 	public void generator() throws Exception {
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;

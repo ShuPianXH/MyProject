@@ -12,7 +12,10 @@ public interface IJianDaService {
     void delete(Integer jiandaId);
     void update(Jianda jd);
     Jianda findOne(Integer jiandaId);
-    List findByType(PageBean pageBean, QuestionType typename);
-
-    List findByQType(PageBean pageBean, String typename);
+    //按学科
+    List<Jianda> findByType(PageBean pageBean, QuestionType typename);
+    //按知识点
+    List<Jianda> findByQType(PageBean pageBean, String typename);
+    //按名称
+    List<Jianda> findByName(String name, PageBean pageBean);
 }

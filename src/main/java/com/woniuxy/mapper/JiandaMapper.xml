@@ -13,6 +13,19 @@
     <result column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
+  <select id="findByType" resultMap="BaseResultMap">
+      SELECT * FROM jianda j WHERE j.typeid in (
+		SELECT typeid FROM question_type WHERE typename=#{typeName}
+)
+  </select>
+  <select id="findByQType" resultMap="BaseResultMap">Q
+      SELECT * FROM jianda WHERE typeid in (
+		SELECT typeid FROM test_questions WHERE test_question_name=#{typeQname}
+)
+  </select>
+  <select id="findByName" resultMap="BaseResultMap">Q
+      SELECT * FROM jianda j WHERE j.title LIKE #{name}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
