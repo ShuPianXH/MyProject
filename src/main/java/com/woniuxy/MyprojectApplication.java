@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.woniuxy.mapper")
+@MapperScan("com.woniuxy")
 public class MyprojectApplication {
 
 	public static void main(String[] args) {
