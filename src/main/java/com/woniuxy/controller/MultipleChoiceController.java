@@ -37,6 +37,7 @@ public class MultipleChoiceController {
 	
 	@RequestMapping("findOne")
 	public @ResponseBody Map findOne(Integer titleid) {
+		System.out.println("MultipleChoiceController.findOne()");
 		Map map = new HashMap<>();
 		map.put("mc",multipleChoiceServiceImpl.findOne(titleid));
 		return map;
