@@ -1,13 +1,15 @@
 package com.woniuxy.service.impl;
 
+import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.TestQuestions;
 import com.woniuxy.service.ITestQusetionsService;
 
 import java.util.List;
 
 public class TestQuestionsServiceImpl implements ITestQusetionsService {
+
     @Override
-    public List<TestQuestions> findAll() {
+    public List<TestQuestions> findAll(PageBean pageBean) {
         return null;
     }
 
@@ -28,6 +30,11 @@ public class TestQuestionsServiceImpl implements ITestQusetionsService {
 
     @Override
     public TestQuestions findOne(Integer testQuestionsId) {
+        return null;
+    }
+
+    @Override
+    public List findByZSD(PageBean pageBean, String zsd) {
         return null;
     }
 }
