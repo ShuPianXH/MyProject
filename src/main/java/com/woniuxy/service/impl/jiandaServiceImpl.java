@@ -1,5 +1,6 @@
 package com.woniuxy.service.impl;
 
+import com.woniuxy.mapper.JiandaMapper;
 import com.woniuxy.pojo.Jianda;
 import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.QuestionType;
@@ -10,9 +11,21 @@ import javax.annotation.Resource;
 import java.util.List;
 @Service
 public class jiandaServiceImpl implements IJianDaService {
+    @Resource
+    private JiandaMapper jiandaMapper;
+
     @Override
-    public List<Jianda> findAll(PageBean pageBean) {
-        return null;
+    public List<Jianda> findAll() {
+        List<Jianda> list = jiandaMapper.findAll();
+        System.out.println(list.size());
+        return jiandaMapper.findAll();
+    }
+
+    @Override
+    public List<Jianda> findByPage(Integer page,Integer limit) {
+        List<Jianda> list = jiandaMapper.findByPage(page,limit);
+        System.out.println(list.size());
+        return jiandaMapper.findByPage(page,limit);
     }
 
     @Override

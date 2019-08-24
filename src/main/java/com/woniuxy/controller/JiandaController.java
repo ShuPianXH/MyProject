@@ -6,10 +6,12 @@ import com.woniuxy.pojo.QuestionType;
 import com.woniuxy.service.IJianDaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -35,13 +37,14 @@ public class JiandaController {
     }
 
     @RequestMapping("/findAll")
-    public @ResponseBody Map<String,Object> findAll(PageBean pageBean){
-        System.out.println(111);
+    public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit){
+        List<Jianda> countdata = jiandaServiceImpl.findAll();
+        List<Jianda> data = jiandaServiceImpl.findByPage(page,limit);
         Map<String,Object> map = new HashMap();
         map.put("code",0);
         map.put("msg","");
-        map.put("count",jiandaServiceImpl.findAll(pageBean).size());
-        map.put("data",jiandaServiceImpl.findAll(pageBean));
+        map.put("count",countdata.size());
+        map.put("data",data);
         return map;
     }
 

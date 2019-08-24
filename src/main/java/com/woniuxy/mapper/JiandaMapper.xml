@@ -13,6 +13,14 @@
     <result column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM jianda;
+  </select>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    SELECT * FROM jianda LIMIT #{page},#{limit};
+  </select>
+
   <select id="findByType" resultMap="BaseResultMap">
       SELECT * FROM jianda j WHERE j.typeid in (
 		SELECT typeid FROM question_type WHERE typename=#{typeName}

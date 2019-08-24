@@ -100,24 +100,21 @@
         table.render({
             elem: '#test'
             ,url:'/Jianda/findAll'
+            ,limit:5
+            ,startByZero:0
             ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                 layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-                //,curr: 5 //设定初始在第 5 页
+                ,curr: 1 //设定初始在第 5 页
                 ,groups: 10 //只显示 1 个连续页码
                 ,first: true //不显示首页
                 ,last: true //不显示尾页
 
             }
             ,cols: [[
-                {field:'id', width:80, title: 'ID', sort: true}
-                ,{field:'username', width:100, title: '用户名'}
-                ,{field:'sex', width:80, title: '性别', sort: true}
-                ,{field:'city', width:80, title: '城市'}
-                ,{field:'sign', title: '签名', minWidth: 150}
-                ,{field:'experience', width:80, title: '积分', sort: true}
-                ,{field:'score', width:80, title: '评分', sort: true}
-                ,{field:'classify', width:80, title: '职业'}
-                ,{field:'wealth', width:135, title: '财富', sort: true}
+                {field:'title', width:80, title: '题目', sort: true}
+                ,{field:'answer', width:80, title: '正确答案', sort: true}
+                ,{field:'typeid', width:80, title: '科目', sort: true}
+                ,{field:'testQuestionId', width:80, title: '题型',sort: true}
             ]]
 
         });

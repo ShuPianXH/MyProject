@@ -7,7 +7,8 @@ import com.woniuxy.pojo.QuestionType;
 import java.util.List;
 
 public interface IJianDaService {
-    List<Jianda> findAll(PageBean pageBean);
+    List<Jianda> findAll();
+    List<Jianda> findByPage(Integer page,Integer limit);
     void save(Jianda jd);
     void delete(Integer jiandaId);
     void update(Jianda jd);

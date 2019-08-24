@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface JiandaMapper {
+    List<Jianda> findByPage(Integer page,Integer limit);
+
+    List<Jianda> findAll();
 
     Jianda findByName(String name);
 
