@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Jianda/")
+@RequestMapping("/Jianda")
 public class JiandaController {
     @Resource
     private IJianDaService jiandaServiceImpl;
 
-    @RequestMapping("findByType")
+    @RequestMapping("/findByType")
     //按科目
     public @ResponseBody Map findByType(PageBean pageBean, QuestionType typename){
         Map map = new HashMap();
@@ -26,7 +26,7 @@ public class JiandaController {
         return map;
     }
 
-    @RequestMapping("findByQType")
+    @RequestMapping("/findByQType")
     //按知识点
     public @ResponseBody Map findByQType(PageBean pageBean,String ZSD){
         Map map = new HashMap();
@@ -34,10 +34,14 @@ public class JiandaController {
         return map;
     }
 
-    @RequestMapping("findAll")
-    public @ResponseBody Map findAll(PageBean pageBean){
-        Map map = new HashMap();
-        map.put("list",jiandaServiceImpl.findAll(pageBean));
+    @RequestMapping("/findAll")
+    public @ResponseBody Map<String,Object> findAll(PageBean pageBean){
+        System.out.println(111);
+        Map<String,Object> map = new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",jiandaServiceImpl.findAll(pageBean).size());
+        map.put("data",jiandaServiceImpl.findAll(pageBean));
         return map;
     }
 
