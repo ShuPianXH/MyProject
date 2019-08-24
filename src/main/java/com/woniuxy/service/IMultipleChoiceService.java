@@ -1,9 +1,9 @@
 package com.woniuxy.service;
 
-import java.util.List;
-
 import com.woniuxy.pojo.MultipleChoice;
 import com.woniuxy.pojo.PageBean;
+
+import java.util.List;
 
 public interface IMultipleChoiceService {
 	public List<MultipleChoice> findAll(PageBean pageBean);

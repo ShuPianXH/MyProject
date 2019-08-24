@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
-
 import com.woniuxy.mapper.TiankongMapper;
 import com.woniuxy.pojo.Tiankong;
+import org.springframework.stereotype.Service;
+
 import com.woniuxy.service.ITiankongService;
 
 @Service

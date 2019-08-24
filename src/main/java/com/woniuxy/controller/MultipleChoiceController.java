@@ -5,13 +5,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.woniuxy.pojo.MultipleChoice;
+import com.woniuxy.pojo.PageBean;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.woniuxy.pojo.MultipleChoice;
-import com.woniuxy.pojo.PageBean;
 import com.woniuxy.service.IMultipleChoiceService;
 
 @Controller
