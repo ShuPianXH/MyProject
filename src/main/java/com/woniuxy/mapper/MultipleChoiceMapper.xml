@@ -17,6 +17,13 @@
     <result column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM multiple_choice;
+  </select>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    SELECT * FROM multiple_choice LIMIT #{page},#{limit};
+  </select>
   
   <select id="findByType" resultMap="BaseResultMap">
   	select * from multiple_choice m where m.typeid in(

@@ -13,6 +13,13 @@
     <result column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM tiankong;
+  </select>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    SELECT * FROM tiankong LIMIT #{page},#{limit};
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

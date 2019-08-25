@@ -1,12 +1,14 @@
 package com.woniuxy.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.woniuxy.pojo.PageBean;
@@ -33,11 +35,16 @@ public class TrueorfalseController {
 		map.put("list", trueOrFalseServiceImpl.findByType(typename, pageBean));
 		return map;
 	}
-	
+
 	@RequestMapping("findAll")
-	public @ResponseBody Map findAll(PageBean pageBean) {
-		Map map = new HashMap<>();
-		map.put("list", trueOrFalseServiceImpl.findAll(pageBean));
+	public @ResponseBody Map findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
+		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAll();
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByPage(page,limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
 		return map;
 	}
 	

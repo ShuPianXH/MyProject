@@ -13,7 +13,14 @@
     <result column="typeid" jdbcType="INTEGER" property="typeid" />
     <result column="test_question_id" jdbcType="INTEGER" property="testQuestionId" />
   </resultMap>
-  
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM TrueorFalse;
+  </select>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    SELECT * FROM TrueorFalse LIMIT #{page},#{limit};
+  </select>
+
   <select id="findByType" resultMap="BaseResultMap">
   	select * from TrueorFalse t where t.typeid in(
   		select typeid from question_type where typename=#{typename}

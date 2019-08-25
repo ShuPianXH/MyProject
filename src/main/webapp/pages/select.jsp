@@ -99,7 +99,7 @@
 
         table.render({
             elem: '#test'
-            ,url:'/Jianda/findAll'
+            ,url:'/tiankong/findAll'
             ,limit:5
             ,startByZero:0
             ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -111,17 +111,18 @@
 
             }
             ,cols: [[
-                {field:'title', width:80, title: '题目', sort: true}
-                ,{field:'answer', width:80, title: '正确答案', sort: true}
-                ,{field:'typeid', width:80, title: '科目', sort: true}
-                ,{field:'testQuestionId', width:80, title: '题型',sort: true}
+                {field:'title', title: '题目', sort: true}
+                ,{field:'option1', title: '选项一', sort: true}
+                ,{field:'option2', title: '选项二', sort: true}
+                ,{field:'option3', title: '选项三', sort: true}
+                ,{field:'option4', title: '选项四',sort: true}
+                ,{field:'answer', title: '正确答案', sort: true}
+                ,{field:'typeid', title: '科目', sort: true}
+                ,{field:'testQuestionId', title: '题型',sort: true}
             ]]
 
         });
     });
-
-
-
 </script>
 </body>
 </html>

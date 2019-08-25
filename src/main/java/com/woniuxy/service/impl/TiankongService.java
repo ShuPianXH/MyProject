@@ -18,9 +18,10 @@ public class TiankongService implements ITiankongService {
 	private TiankongMapper tiankongMapper;
 
 
+
 	@Override
-	public List<Tiankong> findAll(PageBean pageBean) {
-		return null;
+	public List<Tiankong> findAll() {
+		return tiankongMapper.findAll();
 	}
 
 	@Override
@@ -49,6 +50,11 @@ public class TiankongService implements ITiankongService {
 	@Override
 	public List<Tiankong> findByName(String tiankong, PageBean pageBean) {
 		return null;
+	}
+
+	@Override
+	public List<Tiankong> findByPage(int page, int limit) {
+		return tiankongMapper.findByPage(page,limit);
 	}
 
 }

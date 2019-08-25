@@ -24,10 +24,14 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 	}
 
 	@Override
-	public List findAll(PageBean pageBean) {
-		
-		// TODO Auto-generated method stub
-		return multipleChoiceMapper.selectByExample(new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+	public List<MultipleChoice> findByPage(Integer page, Integer limit) {
+		return multipleChoiceMapper.findByPage(page,limit);
+	}
+
+
+	@Override
+	public List<MultipleChoice> findAll() {
+		return multipleChoiceMapper.findAll();
 	}
 
 	@Override

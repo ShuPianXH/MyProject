@@ -38,9 +38,9 @@ public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
     }
 
 	@Override
-	public List<Trueorfalse> findAll(PageBean pageBean) {
+	public List<Trueorfalse> findAll() {
 		// TODO Auto-generated method stub
-		return trueorfalseMapper.selectByExample(new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+		return trueorfalseMapper.findAll();
 	}
 
 	@Override
@@ -53,5 +53,10 @@ public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
 	public List<Trueorfalse> findByTypename(String typename, PageBean pageBean) {
 		// TODO Auto-generated method stub
 		return trueorfalseMapper.findByTypename(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+	}
+
+	@Override
+	public List<Trueorfalse> findByPage(Integer page, Integer limit) {
+		return trueorfalseMapper.findByPage(page,limit);
 	}
 }

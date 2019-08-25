@@ -6,14 +6,16 @@ import com.woniuxy.pojo.PageBean;
 import java.util.List;
 
 public interface IMultipleChoiceService {
-	public List<MultipleChoice> findAll(PageBean pageBean);
+	List<MultipleChoice> findAll();
 	//题号
-	public MultipleChoice findOne(Integer titleid);
+	MultipleChoice findOne(Integer titleid);
 	//知识点
-	public List<MultipleChoice> findByType(String typename,PageBean pageBean);
+	List<MultipleChoice> findByType(String typename,PageBean pageBean);
 	//科目名称
-	public List<MultipleChoice> findByTypename(String typename, PageBean pageBean);
-	public void save(MultipleChoice mc);
-	public void delete(Integer titleid);
-	public void update(MultipleChoice mc);
+	List<MultipleChoice> findByTypename(String typename, PageBean pageBean);
+	//分页
+	List<MultipleChoice> findByPage(Integer page,Integer limit);
+	void save(MultipleChoice mc);
+	void delete(Integer titleid);
+	void update(MultipleChoice mc);
 }
