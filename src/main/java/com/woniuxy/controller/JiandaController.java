@@ -50,6 +50,7 @@ public class JiandaController {
     public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit){
         List<Jianda> countdata = jiandaServiceImpl.findAll();
         List<Jianda> data = jiandaServiceImpl.findByPage(page,limit);
+        System.out.println(data.size());
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
@@ -62,6 +63,7 @@ public class JiandaController {
     public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String name){
         List<Jianda> countdata = jiandaServiceImpl.findAllByName(name);
         List<Jianda> data = jiandaServiceImpl.findByName(name, page, limit);
+        System.out.println(data.size());
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");

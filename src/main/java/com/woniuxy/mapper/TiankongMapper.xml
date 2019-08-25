@@ -21,11 +21,11 @@
     SELECT * FROM tiankong LIMIT (#{page}-1)*#{limit},#{limit}
   </select>
   
-  <select id="findAllByType" resultMap="BaseResultMap">
-		select * from tiankong t where t.typeid in(
-		select typeid from question_type where typename=#{typename}
-		)
-	</select>
+  <!--<select id="findAllByType" resultMap="BaseResultMap">-->
+		<!--select * from tiankong t where t.typeid in(-->
+		<!--select typeid from question_type where typename=#{typename}-->
+		<!--)-->
+	<!--</select>-->
 	<select id="findByType" resultMap="BaseResultMap">
 		select * from tiankong t where t.typeid in(
 		select typeid from question_type where typename=#{typename}
