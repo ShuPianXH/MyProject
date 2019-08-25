@@ -16,6 +16,9 @@ public interface ITrueOrFalseService {
     //科目
     List<Trueorfalse> findAllByQType(String typename);
     List<Trueorfalse> findByQType(String typename,Integer page,Integer limit);
+    //按名称
+    List<Trueorfalse> findAllByName(String name);
+    List<Trueorfalse> findByName(String name, Integer page,Integer limit);
     void save(Trueorfalse tf);
     void delete(Integer tfid);
     void update(Trueorfalse tf);

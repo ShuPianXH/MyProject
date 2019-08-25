@@ -77,5 +77,17 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 		multipleChoiceMapper.updateByPrimaryKeySelective(mc);
 	}
 
+	@Override
+	public List<MultipleChoice> findAllByName(String name) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findAllByName(name);
+	}
+
+	@Override
+	public List<MultipleChoice> findByName(String name, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findByName(name, page, limit);
+	}
+
 	
 }

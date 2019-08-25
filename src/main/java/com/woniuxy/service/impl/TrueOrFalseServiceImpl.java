@@ -77,4 +77,16 @@ public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
 		trueorfalseMapper.updateByPrimaryKeySelective(tf);
 	}
 
+	@Override
+	public List<Trueorfalse> findAllByName(String name) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findAllByName(name);
+	}
+
+	@Override
+	public List<Trueorfalse> findByName(String name, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findByName(name, page, limit);
+	}
+
 }

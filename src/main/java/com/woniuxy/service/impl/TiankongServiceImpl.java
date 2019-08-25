@@ -78,9 +78,15 @@ public class TiankongServiceImpl implements ITiankongService {
 	}
 
 	@Override
-	public List<Tiankong> findByName(String tiankong, PageBean pageBean) {
+	public List<Tiankong> findAllByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return tiankongMapper.findAllByName(name);
+	}
+
+	@Override
+	public List<Tiankong> findByName(String name, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findByName(name, page, limit);
 	}
 
 

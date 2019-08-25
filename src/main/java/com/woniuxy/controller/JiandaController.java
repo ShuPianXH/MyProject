@@ -25,7 +25,7 @@ public class JiandaController {
     public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename){
     	List<Jianda> countdata = jiandaServiceImpl.findAllByType(typename);
         List<Jianda> data = jiandaServiceImpl.findByType(typename,page,limit);
-        Map<String,Object> map = new HashMap();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
         map.put("count",countdata.size());
@@ -38,7 +38,7 @@ public class JiandaController {
     public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename){
     	List<Jianda> countdata = jiandaServiceImpl.findAllByQType(typename);
         List<Jianda> data = jiandaServiceImpl.findByQType(typename,page,limit);
-        Map<String,Object> map = new HashMap();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
         map.put("count",countdata.size());
@@ -50,7 +50,7 @@ public class JiandaController {
     public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit){
         List<Jianda> countdata = jiandaServiceImpl.findAll();
         List<Jianda> data = jiandaServiceImpl.findByPage(page,limit);
-        Map<String,Object> map = new HashMap();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
         map.put("count",countdata.size());
@@ -59,15 +59,20 @@ public class JiandaController {
     }
 
     @RequestMapping("/findByName")
-    public @ResponseBody Map findByName(String name,PageBean pageBean){
-        Map map = new HashMap();
-        map.put("list",jiandaServiceImpl.findByName(name,pageBean));
+    public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String name){
+        List<Jianda> countdata = jiandaServiceImpl.findAllByName(name);
+        List<Jianda> data = jiandaServiceImpl.findByName(name, page, limit);
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",countdata.size());
+        map.put("data",data);
         return map;
     }
 
     @RequestMapping("/findOne")
-    public @ResponseBody Map findOne(Integer jiandaId){
-        Map map = new HashMap();
+    public @ResponseBody Map<String,Object> findOne(Integer jiandaId){
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("list",jiandaServiceImpl.findOne(jiandaId));
         return map;
     }

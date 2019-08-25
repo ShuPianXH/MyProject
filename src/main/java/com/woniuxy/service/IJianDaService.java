@@ -20,5 +20,6 @@ public interface IJianDaService {
     List<Jianda> findAllByQType(String typename);
     List<Jianda> findByQType(String typeName,Integer page,Integer limit);
     //按名称
-    List<Jianda> findByName(String name, PageBean pageBean);
+    List<Jianda> findAllByName(String name);
+    List<Jianda> findByName(String name, Integer page,Integer limit);
 }

@@ -1,7 +1,6 @@
 package com.woniuxy.service;
 
 import com.woniuxy.pojo.MultipleChoice;
-import com.woniuxy.pojo.PageBean;
 
 import java.util.List;
 
@@ -17,6 +16,9 @@ public interface IMultipleChoiceService {
 	//科目名称
 	List<MultipleChoice> findAllByQType(String typename);
 	List<MultipleChoice> findByQType(String typename,Integer page,Integer limit);
+	//按名称
+    List<MultipleChoice> findAllByName(String name);
+    List<MultipleChoice> findByName(String name, Integer page,Integer limit);
 	void save(MultipleChoice mc);
 	void delete(Integer titleid);
 	void update(MultipleChoice mc);

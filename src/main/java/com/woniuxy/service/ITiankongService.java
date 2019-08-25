@@ -1,6 +1,5 @@
 package com.woniuxy.service;
 
-import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.Tiankong;
 
 import java.util.List;
@@ -15,10 +14,12 @@ public interface ITiankongService {
 	List<Tiankong> findAllByQType(String typename);
 	List<Tiankong> findByQType(String typename, Integer page, Integer limit);
 	
+	List<Tiankong> findAllByName(String name);
+    List<Tiankong> findByName(String name, Integer page,Integer limit);
+	
 	void save(Tiankong tk);
 	void delete(Integer tiankongId);
 	void update(Tiankong tk);
 	Tiankong findOne(Integer tiankongId);
-	List<Tiankong> findByName(String tiankong,PageBean pageBean);
 
 }

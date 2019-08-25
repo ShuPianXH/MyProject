@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.woniuxy.pojo.Jianda;
 import com.woniuxy.pojo.MultipleChoice;
 import com.woniuxy.pojo.PageBean;
 import com.woniuxy.service.impl.MultipleChoiceServiceImpl;
@@ -24,10 +25,10 @@ public class MultipleChoiceController {
 	private MultipleChoiceServiceImpl multipleChoiceServiceImpl;
 	
 	@RequestMapping("findByQType")
-	public @ResponseBody Map findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
 		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByQType(typename);
 		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, page, limit);
-		Map<String,Object> map = new HashMap();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("code",0);
 		map.put("msg","");
 		map.put("count",countdata.size());
@@ -36,10 +37,10 @@ public class MultipleChoiceController {
 	}
 	
 	@RequestMapping("findByType")
-	public @ResponseBody Map findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
 		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByType(typename);
 		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, page, limit);
-		Map<String,Object> map = new HashMap();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("code",0);
 		map.put("msg","");
 		map.put("count",countdata.size());
@@ -48,10 +49,10 @@ public class MultipleChoiceController {
 	}
 	
 	@RequestMapping("findAll")
-	public @ResponseBody Map findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
+	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
 		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAll();
 		List<MultipleChoice> data = multipleChoiceServiceImpl.findByPage(page,limit);
-		Map<String,Object> map = new HashMap();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("code",0);
 		map.put("msg","");
 		map.put("count",countdata.size());
@@ -59,9 +60,21 @@ public class MultipleChoiceController {
 		return map;
 	}
 	
+	@RequestMapping("/findByName")
+    public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String name){
+        List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByName(name);
+        List<MultipleChoice> data = multipleChoiceServiceImpl.findByName(name, page, limit);
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",countdata.size());
+        map.put("data",data);
+        return map;
+    }
+	
 	@RequestMapping("findOne")
-	public @ResponseBody Map findOne(Integer titleid) {
-		Map map = new HashMap<>();
+	public @ResponseBody Map<String,Object> findOne(Integer titleid) {
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("mc",multipleChoiceServiceImpl.findOne(titleid));
 		return map;
 	}

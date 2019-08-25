@@ -73,8 +73,14 @@ public class jiandaServiceImpl implements IJianDaService {
 	}
 
 	@Override
-	public List<Jianda> findByName(String name, PageBean pageBean) {
+	public List<Jianda> findAllByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return jiandaMapper.findAllByName(name);
+	}
+
+	@Override
+	public List<Jianda> findByName(String name, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findByName(name, page, limit);
 	}
 }

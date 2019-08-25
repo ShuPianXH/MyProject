@@ -1,5 +1,6 @@
 package com.woniuxy.controller;
 
+import com.woniuxy.pojo.Jianda;
 import com.woniuxy.pojo.Tiankong;
 import com.woniuxy.service.ITiankongService;
 import org.springframework.stereotype.Controller;
@@ -16,64 +17,79 @@ import java.util.Map;
 @RequestMapping("/tiankong/")
 public class TianKongController {
 
-    @Resource
-    private ITiankongService tiankongServiceImpl;
+	@Resource
+	private ITiankongService tiankongServiceImpl;
 
-    @RequestMapping("findByQType")
-	public @ResponseBody Map findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+	@RequestMapping("findByQType")
+	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "5") int limit, String typename) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAllByQType(typename);
 		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, page, limit);
-		Map<String,Object> map = new HashMap();
-		map.put("code",0);
-		map.put("msg","");
-		map.put("count",countdata.size());
-		map.put("data",data);
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countdata.size());
+		map.put("data", data);
 		return map;
 	}
-	
+
 	@RequestMapping("findByType")
-	public @ResponseBody Map findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "5") int limit, String typename) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAllByType(typename);
 		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, page, limit);
-		Map<String,Object> map = new HashMap();
-		map.put("code",0);
-		map.put("msg","");
-		map.put("count",countdata.size());
-		map.put("data",data);
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countdata.size());
+		map.put("data", data);
 		return map;
 	}
-	
+
 	@RequestMapping("findAll")
-	public @ResponseBody Map findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
+	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "5") int limit) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAll();
-		List<Tiankong> data = tiankongServiceImpl.findByPage(page,limit);
-		Map<String,Object> map = new HashMap();
-		map.put("code",0);
-		map.put("msg","");
-		map.put("count",countdata.size());
-		map.put("data",data);
+		List<Tiankong> data = tiankongServiceImpl.findByPage(page, limit);
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countdata.size());
+		map.put("data", data);
 		return map;
 	}
-	
+
+	@RequestMapping("/findByName")
+	public @ResponseBody Map<String, Object> findByName(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String name) {
+		List<Tiankong> countdata = tiankongServiceImpl.findAllByName(name);
+		List<Tiankong> data = tiankongServiceImpl.findByName(name, page, limit);
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countdata.size());
+		map.put("data", data);
+		return map;
+	}
+
 	@RequestMapping("findOne")
-	public @ResponseBody Map findOne(Integer tkid) {
-		Map map = new HashMap<>();
-		map.put("mc",tiankongServiceImpl.findOne(tkid));
+	public @ResponseBody Map<String,Object> findOne(Integer tkid) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("mc", tiankongServiceImpl.findOne(tkid));
 		return map;
 	}
-	
+
 	@RequestMapping("save")
 	public String save(Tiankong tk) {
 		tiankongServiceImpl.save(tk);
 		return "findAll";
 	}
-	
+
 	@RequestMapping("delete")
 	public String delete(Integer tkid) {
 		tiankongServiceImpl.delete(tkid);
 		return "findAll";
 	}
-	
+
 	@RequestMapping("update")
 	public String update(Tiankong tk) {
 		tiankongServiceImpl.update(tk);
