@@ -30,36 +30,51 @@ public class jiandaServiceImpl implements IJianDaService {
 
     @Override
     public void save(Jianda jd) {
-
+    	jiandaMapper.insertSelective(jd);
     }
 
     @Override
     public void delete(Integer jiandaId) {
-
+    	jiandaMapper.deleteByPrimaryKey(jiandaId);
     }
 
     @Override
     public void update(Jianda jd) {
-
+    	jiandaMapper.updateByPrimaryKeySelective(jd);
     }
 
     @Override
     public Jianda findOne(Integer jiandaId) {
-        return null;
+        return jiandaMapper.selectByPrimaryKey(jiandaId);
     }
 
-    @Override
-    public List findByType(PageBean pageBean, QuestionType typename) {
-        return null;
-    }
 
-    @Override
-    public List findByQType(PageBean pageBean, String typename) {
-        return null;
-    }
+	@Override
+	public List<Jianda> findAllByType(String typeName) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findAllByType(typeName);
+	}
 
-    @Override
-    public List<Jianda> findByName(String name, PageBean pageBean) {
-        return null;
-    }
+	@Override
+	public List<Jianda> findByType(String typeName, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findByType(typeName, page, limit);
+	}
+	@Override
+	public List<Jianda> findAllByQType(String typeQname) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findAllByQType(typeQname);
+	}
+
+	@Override
+	public List<Jianda> findByQType(String typeQname, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findByQType(typeQname, page, limit);
+	}
+
+	@Override
+	public List<Jianda> findByName(String name, PageBean pageBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

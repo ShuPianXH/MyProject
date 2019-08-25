@@ -1,5 +1,6 @@
 package com.woniuxy.controller;
 
+import com.woniuxy.pojo.Tiankong;
 import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.Tiankong;
 import com.woniuxy.service.ITiankongService;
@@ -18,24 +19,66 @@ import java.util.Map;
 public class TianKongController {
 
     @Resource
-    private ITiankongService tiankongService;
+    private ITiankongService tiankongServiceImpl;
 
-    @RequestMapping("findAll")
-    public @ResponseBody Map findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
-        List<Tiankong> countdata = tiankongService.findAll();
-        List<Tiankong> data = tiankongService.findByPage(page,limit);
-        Map<String,Object> map = new HashMap();
-        map.put("code",0);
-        map.put("msg","");
-        map.put("count",countdata.size());
-        map.put("data",data);
-        return map;
-    }
-
-    @RequestMapping("findByName")
-    private @ResponseBody Map findByName(String name,PageBean pageBean){
-        Map map = new HashMap();
-        map.put("list",tiankongService.findByName(name,pageBean));
-        return map;
-    }
+    @RequestMapping("findByQType")
+	public @ResponseBody Map findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+		List<Tiankong> countdata = tiankongServiceImpl.findAllByQType(typename);
+		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, page, limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
+		return map;
+	}
+	
+	@RequestMapping("findByType")
+	public @ResponseBody Map findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+		List<Tiankong> countdata = tiankongServiceImpl.findAllByType(typename);
+		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, page, limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
+		return map;
+	}
+	
+	@RequestMapping("findAll")
+	public @ResponseBody Map findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
+		List<Tiankong> countdata = tiankongServiceImpl.findAll();
+		List<Tiankong> data = tiankongServiceImpl.findByPage(page,limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
+		return map;
+	}
+	
+	@RequestMapping("findOne")
+	public @ResponseBody Map findOne(Integer tkid) {
+		Map map = new HashMap<>();
+		map.put("mc",tiankongServiceImpl.findOne(tkid));
+		return map;
+	}
+	
+	@RequestMapping("save")
+	public String save(Tiankong tk) {
+		tiankongServiceImpl.save(tk);
+		return "findAll";
+	}
+	
+	@RequestMapping("delete")
+	public String delete(Integer tkid) {
+		tiankongServiceImpl.delete(tkid);
+		return "findAll";
+	}
+	
+	@RequestMapping("update")
+	public String update(Tiankong tk) {
+		tiankongServiceImpl.update(tk);
+		return "findAll";
+	}
 }

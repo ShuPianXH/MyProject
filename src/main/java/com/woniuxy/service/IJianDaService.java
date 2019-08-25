@@ -14,9 +14,11 @@ public interface IJianDaService {
     void update(Jianda jd);
     Jianda findOne(Integer jiandaId);
     //按学科
-    List<Jianda> findByType(PageBean pageBean, QuestionType typename);
+    List<Jianda> findAllByType(String typeName);
+    List<Jianda> findByType(String typeName,Integer page,Integer limit);
     //按知识点
-    List<Jianda> findByQType(PageBean pageBean, String typename);
+    List<Jianda> findAllByQType(String typename);
+    List<Jianda> findByQType(String typeName,Integer page,Integer limit);
     //按名称
     List<Jianda> findByName(String name, PageBean pageBean);
 }

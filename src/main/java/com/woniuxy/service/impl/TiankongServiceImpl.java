@@ -12,33 +12,63 @@ import org.springframework.stereotype.Service;
 import com.woniuxy.service.ITiankongService;
 
 @Service
-public class TiankongService implements ITiankongService {
+public class TiankongServiceImpl implements ITiankongService {
 
 	@Resource
 	private TiankongMapper tiankongMapper;
 
-
-
 	@Override
 	public List<Tiankong> findAll() {
+		// TODO Auto-generated method stub
 		return tiankongMapper.findAll();
 	}
 
 	@Override
+	public List<Tiankong> findByPage(Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findByPage(page, limit);
+	}
+
+	@Override
+	public List<Tiankong> findAllByType(String typename) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findAllByType(typename);
+	}
+
+	@Override
+	public List<Tiankong> findByType(String typename, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findByType(typename, page, limit);
+	}
+
+	@Override
+	public List<Tiankong> findAllByQType(String typename) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findAllByQType(typename);
+	}
+
+	@Override
+	public List<Tiankong> findByQType(String typename, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findByQType(typename, page, limit);
+	}
+
+	@Override
 	public void save(Tiankong tk) {
-		tiankongMapper.insertSelective(null);
-		
+		// TODO Auto-generated method stub
+		tiankongMapper.insertSelective(tk);
 	}
 
 	@Override
 	public void delete(Integer tiankongId) {
+		// TODO Auto-generated method stub
 		tiankongMapper.deleteByPrimaryKey(tiankongId);
-		
 	}
 
 	@Override
 	public void update(Tiankong tk) {
-		tiankongMapper.updateByPrimaryKeySelective(null);
+		// TODO Auto-generated method stub
+		tiankongMapper.updateByPrimaryKeySelective(tk);
 	}
 
 	@Override
@@ -49,12 +79,9 @@ public class TiankongService implements ITiankongService {
 
 	@Override
 	public List<Tiankong> findByName(String tiankong, PageBean pageBean) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<Tiankong> findByPage(int page, int limit) {
-		return tiankongMapper.findByPage(page,limit);
-	}
 
 }

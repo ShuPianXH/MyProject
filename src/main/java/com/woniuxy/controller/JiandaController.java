@@ -22,17 +22,27 @@ public class JiandaController {
 
     @RequestMapping("/findByType")
     //按科目
-    public @ResponseBody Map findByType(PageBean pageBean, QuestionType typename){
-        Map map = new HashMap();
-        map.put("list",jiandaServiceImpl.findByType( pageBean,typename));
+    public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename){
+    	List<Jianda> countdata = jiandaServiceImpl.findAllByType(typename);
+        List<Jianda> data = jiandaServiceImpl.findByType(typename,page,limit);
+        Map<String,Object> map = new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",countdata.size());
+        map.put("data",data);
         return map;
     }
 
     @RequestMapping("/findByQType")
     //按知识点
-    public @ResponseBody Map findByQType(PageBean pageBean,String ZSD){
-        Map map = new HashMap();
-        map.put("list",jiandaServiceImpl.findByQType( pageBean,ZSD));
+    public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename){
+    	List<Jianda> countdata = jiandaServiceImpl.findAllByQType(typename);
+        List<Jianda> data = jiandaServiceImpl.findByQType(typename,page,limit);
+        Map<String,Object> map = new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",countdata.size());
+        map.put("data",data);
         return map;
     }
 
@@ -48,33 +58,32 @@ public class JiandaController {
         return map;
     }
 
-
-    @RequestMapping("findByName")
+    @RequestMapping("/findByName")
     public @ResponseBody Map findByName(String name,PageBean pageBean){
         Map map = new HashMap();
         map.put("list",jiandaServiceImpl.findByName(name,pageBean));
         return map;
     }
 
-    @RequestMapping("findOne")
+    @RequestMapping("/findOne")
     public @ResponseBody Map findOne(Integer jiandaId){
         Map map = new HashMap();
         map.put("list",jiandaServiceImpl.findOne(jiandaId));
         return map;
     }
-    @RequestMapping("save")
+    @RequestMapping("/save")
     public String save(Jianda jianda){
         jiandaServiceImpl.save(jianda);
         return "index";
     }
 
-    @RequestMapping("update")
+    @RequestMapping("/update")
     public String update(Jianda jianda){
         jiandaServiceImpl.update(jianda);
         return "index";
     }
 
-    @RequestMapping("delete")
+    @RequestMapping("/delete")
     public String delete(Integer jiandaId){
         jiandaServiceImpl.delete(jiandaId);
         return "index";

@@ -23,17 +23,27 @@ public class MultipleChoiceController {
 	@Resource
 	private MultipleChoiceServiceImpl multipleChoiceServiceImpl;
 	
-	@RequestMapping("findByTypename")
-	public @ResponseBody Map findByTypename(String typename, PageBean pageBean) {
-		Map map = new HashMap();
-		map.put("list", multipleChoiceServiceImpl.findByTypename(typename, pageBean));
+	@RequestMapping("findByQType")
+	public @ResponseBody Map findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByQType(typename);
+		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, page, limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
 		return map;
 	}
 	
 	@RequestMapping("findByType")
-	public @ResponseBody Map findByType(String typename, PageBean pageBean) {
-		Map map = new HashMap();
-		map.put("list", multipleChoiceServiceImpl.findByType(typename, pageBean));
+	public @ResponseBody Map findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByType(typename);
+		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, page, limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
 		return map;
 	}
 	
@@ -51,7 +61,6 @@ public class MultipleChoiceController {
 	
 	@RequestMapping("findOne")
 	public @ResponseBody Map findOne(Integer titleid) {
-		System.out.println("MultipleChoiceController.findOne()");
 		Map map = new HashMap<>();
 		map.put("mc",multipleChoiceServiceImpl.findOne(titleid));
 		return map;

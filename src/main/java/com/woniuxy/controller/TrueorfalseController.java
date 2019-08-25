@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.woniuxy.pojo.PageBean;
 import com.woniuxy.pojo.Trueorfalse;
 import com.woniuxy.service.ITrueOrFalseService;
 
@@ -22,20 +21,30 @@ public class TrueorfalseController {
 	@Resource
 	private ITrueOrFalseService trueOrFalseServiceImpl;
 	
-	@RequestMapping("findByTypename")
-	public @ResponseBody Map findByTypename(String typename, PageBean pageBean){
-		Map map = new HashMap();
-		map.put("list", trueOrFalseServiceImpl.findByTypename(typename, pageBean));
+	@RequestMapping("findByQType")
+	public @ResponseBody Map findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAllByQType(typename);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByQType(typename, page, limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
 		return map;
 	}
 	
 	@RequestMapping("findByType")
-	public @ResponseBody Map findByType(String typename, PageBean pageBean){
-		Map map = new HashMap();
-		map.put("list", trueOrFalseServiceImpl.findByType(typename, pageBean));
+	public @ResponseBody Map findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAllByType(typename);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByQType(typename, page, limit);
+		Map<String,Object> map = new HashMap();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countdata.size());
+		map.put("data",data);
 		return map;
 	}
-
+	
 	@RequestMapping("findAll")
 	public @ResponseBody Map findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
 		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAll();

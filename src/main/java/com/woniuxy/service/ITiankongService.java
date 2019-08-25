@@ -7,11 +7,18 @@ import java.util.List;
 
 public interface ITiankongService {
 	List<Tiankong> findAll();
+	List<Tiankong> findByPage(Integer page, Integer limit);
+	
+	List<Tiankong> findAllByType(String typename);
+	List<Tiankong> findByType(String typename, Integer page, Integer limit);
+	
+	List<Tiankong> findAllByQType(String typename);
+	List<Tiankong> findByQType(String typename, Integer page, Integer limit);
+	
 	void save(Tiankong tk);
 	void delete(Integer tiankongId);
 	void update(Tiankong tk);
 	Tiankong findOne(Integer tiankongId);
 	List<Tiankong> findByName(String tiankong,PageBean pageBean);
 
-	List<Tiankong> findByPage(int page, int limit);
 }

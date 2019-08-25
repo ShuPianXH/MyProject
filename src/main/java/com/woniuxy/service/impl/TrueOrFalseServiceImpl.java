@@ -17,26 +17,6 @@ public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
 	@Resource
 	private TrueorfalseMapper trueorfalseMapper;
 
-    @Override
-    public void save(Trueorfalse trueorfalse) {
-    	trueorfalseMapper.insertSelective(trueorfalse);
-    }
-
-    @Override
-    public void delete(Integer tfId) {
-    	trueorfalseMapper.deleteByPrimaryKey(tfId);
-    }
-
-    @Override
-    public void update(Trueorfalse trueorfalse) {
-    	trueorfalseMapper.updateByPrimaryKeySelective(trueorfalse);
-    }
-
-    @Override
-    public Trueorfalse findOne(Integer tfId) {
-        return trueorfalseMapper.selectByPrimaryKey(tfId);
-    }
-
 	@Override
 	public List<Trueorfalse> findAll() {
 		// TODO Auto-generated method stub
@@ -44,19 +24,57 @@ public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
 	}
 
 	@Override
-	public List<Trueorfalse> findByType(String typename, PageBean pageBean) {
-		// TODO Auto-generated method stub
-		return trueorfalseMapper.findByType(typename,new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
-	}
-
-	@Override
-	public List<Trueorfalse> findByTypename(String typename, PageBean pageBean) {
-		// TODO Auto-generated method stub
-		return trueorfalseMapper.findByTypename(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
-	}
-
-	@Override
 	public List<Trueorfalse> findByPage(Integer page, Integer limit) {
-		return trueorfalseMapper.findByPage(page,limit);
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findByPage(page, limit);
 	}
+
+	@Override
+	public Trueorfalse findOne(Integer tfid) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.selectByPrimaryKey(tfid);
+	}
+
+	@Override
+	public List<Trueorfalse> findAllByType(String typename) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findAllByType(typename);
+	}
+
+	@Override
+	public List<Trueorfalse> findByType(String typename, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findByType(typename, page, limit);
+	}
+
+	@Override
+	public List<Trueorfalse> findAllByQType(String typename) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findAllByQType(typename);
+	}
+
+	@Override
+	public List<Trueorfalse> findByQType(String typename, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findByQType(typename, page, limit);
+	}
+
+	@Override
+	public void save(Trueorfalse tf) {
+		// TODO Auto-generated method stub
+		trueorfalseMapper.insertSelective(tf);
+	}
+
+	@Override
+	public void delete(Integer tfid) {
+		// TODO Auto-generated method stub
+		trueorfalseMapper.deleteByPrimaryKey(tfid);
+	}
+
+	@Override
+	public void update(Trueorfalse tf) {
+		// TODO Auto-generated method stub
+		trueorfalseMapper.updateByPrimaryKeySelective(tf);
+	}
+
 }

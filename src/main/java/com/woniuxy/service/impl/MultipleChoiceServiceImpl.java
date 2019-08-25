@@ -18,26 +18,45 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 	private MultipleChoiceMapper multipleChoiceMapper;
 
 	@Override
-	public List findByTypename(String typename, PageBean pageBean) {
+	public List<MultipleChoice> findAll() {
 		// TODO Auto-generated method stub
-		return multipleChoiceMapper.findByTypename(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
+		return multipleChoiceMapper.findAll();
 	}
 
 	@Override
 	public List<MultipleChoice> findByPage(Integer page, Integer limit) {
-		return multipleChoiceMapper.findByPage(page,limit);
-	}
-
-
-	@Override
-	public List<MultipleChoice> findAll() {
-		return multipleChoiceMapper.findAll();
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findByPage(page, limit);
 	}
 
 	@Override
 	public MultipleChoice findOne(Integer titleid) {
 		// TODO Auto-generated method stub
 		return multipleChoiceMapper.selectByPrimaryKey(titleid);
+	}
+
+	@Override
+	public List<MultipleChoice> findAllByType(String typename) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findAllByType(typename);
+	}
+
+	@Override
+	public List<MultipleChoice> findByType(String typename, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findByType(typename, page, limit);
+	}
+
+	@Override
+	public List<MultipleChoice> findAllByQType(String typename) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findAllByQType(typename);
+	}
+
+	@Override
+	public List<MultipleChoice> findByQType(String typename, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findByQType(typename, page, limit);
 	}
 
 	@Override
@@ -55,13 +74,8 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 	@Override
 	public void update(MultipleChoice mc) {
 		// TODO Auto-generated method stub
-		multipleChoiceMapper.updateByPrimaryKey(mc);
+		multipleChoiceMapper.updateByPrimaryKeySelective(mc);
 	}
 
-	@Override
-	public List<MultipleChoice> findByType(String typename, PageBean pageBean) {
-		// TODO Auto-generated method stub
-		return multipleChoiceMapper.findByType(typename, new RowBounds(pageBean.getOffset(),pageBean.getLimit()));
-	}
-
+	
 }
