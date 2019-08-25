@@ -35,13 +35,13 @@
 		) (#{page}-1)*#{limit},#{limit}
 	</select>
 
-	<select id="findByTypename" resultMap="BaseResultMap">
+	<select id="findAllByQType" resultMap="BaseResultMap">
 		select * from multiple_choice m where m.test_question_id in(
 		select test_question_id from test_questions where
 		test_question_name=#{typename}
 		)
 	</select>
-	<select id="findByTypename" resultMap="BaseResultMap">
+	<select id="findByQType" resultMap="BaseResultMap">
 		select * from multiple_choice m where m.test_question_id in(
 		select test_question_id from test_questions where
 		test_question_name=#{typename}
