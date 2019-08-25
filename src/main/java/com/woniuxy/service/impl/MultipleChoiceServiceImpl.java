@@ -89,5 +89,17 @@ public class MultipleChoiceServiceImpl implements IMultipleChoiceService {
 		return multipleChoiceMapper.findByName(name, page, limit);
 	}
 
+	@Override
+	public List<MultipleChoice> findAllByTwo(String typename, String typename2) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findAllByTwo(typename, typename2);
+	}
+
+	@Override
+	public List<MultipleChoice> findByTwo(String typename, String typename2, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return multipleChoiceMapper.findByTwo(typename, typename2, page, limit);
+	}
+
 	
 }

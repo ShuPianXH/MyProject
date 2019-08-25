@@ -50,26 +50,26 @@ public class jiandaServiceImpl implements IJianDaService {
 
 
 	@Override
-	public List<Jianda> findAllByType(String typeName) {
+	public List<Jianda> findAllByType(String typename) {
 		// TODO Auto-generated method stub
-		return jiandaMapper.findAllByType(typeName);
+		return jiandaMapper.findAllByType(typename);
 	}
 
 	@Override
-	public List<Jianda> findByType(String typeName, Integer page, Integer limit) {
+	public List<Jianda> findByType(String typename, Integer page, Integer limit) {
 		// TODO Auto-generated method stub
-		return jiandaMapper.findByType(typeName, page, limit);
+		return jiandaMapper.findByType(typename, page, limit);
 	}
 	@Override
-	public List<Jianda> findAllByQType(String typeQname) {
+	public List<Jianda> findAllByQType(String typename) {
 		// TODO Auto-generated method stub
-		return jiandaMapper.findAllByQType(typeQname);
+		return jiandaMapper.findAllByQType(typename);
 	}
 
 	@Override
-	public List<Jianda> findByQType(String typeQname, Integer page, Integer limit) {
+	public List<Jianda> findByQType(String typename, Integer page, Integer limit) {
 		// TODO Auto-generated method stub
-		return jiandaMapper.findByQType(typeQname, page, limit);
+		return jiandaMapper.findByQType(typename, page, limit);
 	}
 
 	@Override
@@ -82,5 +82,17 @@ public class jiandaServiceImpl implements IJianDaService {
 	public List<Jianda> findByName(String name, Integer page, Integer limit) {
 		// TODO Auto-generated method stub
 		return jiandaMapper.findByName(name, page, limit);
+	}
+
+	@Override
+	public List<Jianda> findAllByTwo(String typename, String typename2) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findAllByTwo(typename, typename2);
+	}
+
+	@Override
+	public List<Jianda> findByTwo(String typename, String typename2, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return jiandaMapper.findByTwo(typename, typename2, page, limit);
 	}
 }

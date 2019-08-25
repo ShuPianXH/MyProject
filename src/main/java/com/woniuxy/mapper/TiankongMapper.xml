@@ -51,6 +51,21 @@
 	<select id="findByName" resultMap="BaseResultMap">
 		SELECT * FROM tiankong t WHERE t.title LIKE #{name} limit (#{page}-1)*#{limit},#{limit}
 	</select>
+	
+	<select id="findAllByTwo" resultMap="BaseResultMap">
+		select * from tiankong t where t.typeid in (
+		select typeid from question_type where typename=#{typename}
+		) and t.test_question_id in (
+		select test_question_id from test_question where test_question_name=#{typename2}
+		)
+	</select>
+	<select id="findByTwo" resultMap="BaseResultMap">
+		select * from tiankong t where t.typeid in (
+		select typeid from question_type where typename=#{typename}
+		) and t.test_question_id in (
+		select test_question_id from test_question where test_question_name=#{typename2}
+		) limit (#{page}-1)*#{limit},#{limit}
+	</select>
   
   <sql id="Example_Where_Clause">
     <!--

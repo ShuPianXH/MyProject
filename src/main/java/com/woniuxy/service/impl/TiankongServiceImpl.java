@@ -89,5 +89,17 @@ public class TiankongServiceImpl implements ITiankongService {
 		return tiankongMapper.findByName(name, page, limit);
 	}
 
+	@Override
+	public List<Tiankong> findAllByTwo(String typename, String typename2) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findAllByTwo(typename, typename2);
+	}
+
+	@Override
+	public List<Tiankong> findByTwo(String typename, String typename2, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return tiankongMapper.findByTwo(typename, typename2, page, limit);
+	}
+
 
 }

@@ -19,6 +19,9 @@ public interface ITrueOrFalseService {
     //按名称
     List<Trueorfalse> findAllByName(String name);
     List<Trueorfalse> findByName(String name, Integer page,Integer limit);
+    
+    List<Trueorfalse> findAllByTwo(String typename,String typename2);
+    List<Trueorfalse> findByTwo(String typename,String typename2,Integer page, Integer limit);
     void save(Trueorfalse tf);
     void delete(Integer tfid);
     void update(Trueorfalse tf);

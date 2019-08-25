@@ -16,6 +16,9 @@ public interface ITiankongService {
 	
 	List<Tiankong> findAllByName(String name);
     List<Tiankong> findByName(String name, Integer page,Integer limit);
+    
+    List<Tiankong> findAllByTwo(String typename,String typename2);
+    List<Tiankong> findByTwo(String typename,String typename2,Integer page, Integer limit);
 	
 	void save(Tiankong tk);
 	void delete(Integer tiankongId);

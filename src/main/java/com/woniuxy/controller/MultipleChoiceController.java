@@ -72,6 +72,18 @@ public class MultipleChoiceController {
         return map;
     }
 	
+	@RequestMapping("/findByTwo")
+    public @ResponseBody Map<String,Object> findByTwo(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String typename,String typename2){
+        List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByTwo(typename,typename2);
+        List<MultipleChoice> data = multipleChoiceServiceImpl.findByTwo(typename,typename2, page, limit);
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",countdata.size());
+        map.put("data",data);
+        return map;
+    }
+	
 	@RequestMapping("findOne")
 	public @ResponseBody Map<String,Object> findOne(Integer titleid) {
 		Map<String,Object> map = new HashMap<String,Object>();

@@ -19,6 +19,9 @@ public interface IMultipleChoiceService {
 	//按名称
     List<MultipleChoice> findAllByName(String name);
     List<MultipleChoice> findByName(String name, Integer page,Integer limit);
+    //按学科知识点
+    List<MultipleChoice> findAllByTwo(String typename,String typename2);
+    List<MultipleChoice> findByTwo(String typename,String typename2,Integer page, Integer limit);
 	void save(MultipleChoice mc);
 	void delete(Integer titleid);
 	void update(MultipleChoice mc);

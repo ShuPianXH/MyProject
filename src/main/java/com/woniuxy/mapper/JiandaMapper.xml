@@ -22,26 +22,26 @@
 	<select id="findAllByType" resultMap="BaseResultMap">
 		SELECT * FROM jianda j WHERE j.typeid in (
 		SELECT typeid FROM question_type
-		WHERE typename=#{typeName}
+		WHERE typename=#{typename}
 		)
 	</select>
 	<select id="findByType" resultMap="BaseResultMap">
 		SELECT * FROM jianda j WHERE j.typeid in (
 		SELECT typeid FROM question_type
-		WHERE typename=#{typeName}
+		WHERE typename=#{typename}
 		) limit (#{page}-1)*#{limit},#{limit}
 	</select>
 	
 	<select id="findAllByQType" resultMap="BaseResultMap">Q
-		SELECT * FROM jianda WHERE typeid in (
-		SELECT typeid FROM test_questions
-		WHERE test_question_name=#{typeQname}
+		SELECT * FROM jianda j WHERE j.test_question_id in (
+		SELECT test_question_id FROM test_questions
+		WHERE test_question_name=#{typename}
 		)
 	</select>
 	<select id="findByQType" resultMap="BaseResultMap">Q
-		SELECT * FROM jianda WHERE typeid in (
-		SELECT typeid FROM test_questions
-		WHERE test_question_name=#{typeQname}
+		SELECT * FROM jianda j WHERE j.test_question_id in (
+		SELECT test_question_id FROM test_questions
+		WHERE test_question_name=#{typename}
 		) limit (#{page}-1)*#{limit},#{limit}
 	</select>
 	
@@ -50,6 +50,21 @@
 	</select>
 	<select id="findByName" resultMap="BaseResultMap">
 		SELECT * FROM jianda j WHERE j.title LIKE #{name} limit (#{page}-1)*#{limit},#{limit}
+	</select>
+	
+	<select id="findAllByTwo" resultMap="BaseResultMap">
+		select * from jianda j where j.typeid in (
+		select typeid from question_type where typename=#{typename}
+		) and j.test_question_id in (
+		select test_question_id from test_question where test_question_name=#{typename2}
+		)
+	</select>
+	<select id="findByTwo" resultMap="BaseResultMap">
+		select * from jianda j where j.typeid in (
+		select typeid from question_type where typename=#{typename}
+		) and j.test_question_id in (
+		select test_question_id from test_question where test_question_name=#{typename2}
+		) limit (#{page}-1)*#{limit},#{limit}
 	</select>
 	
 	<sql id="Example_Where_Clause">

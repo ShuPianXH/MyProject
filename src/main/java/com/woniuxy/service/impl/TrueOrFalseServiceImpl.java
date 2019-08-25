@@ -89,4 +89,16 @@ public class TrueOrFalseServiceImpl implements ITrueOrFalseService {
 		return trueorfalseMapper.findByName(name, page, limit);
 	}
 
+	@Override
+	public List<Trueorfalse> findAllByTwo(String typename, String typename2) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findAllByTwo(typename, typename2);
+	}
+
+	@Override
+	public List<Trueorfalse> findByTwo(String typename, String typename2, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return trueorfalseMapper.findByTwo(typename, typename2, page, limit);
+	}
+
 }
