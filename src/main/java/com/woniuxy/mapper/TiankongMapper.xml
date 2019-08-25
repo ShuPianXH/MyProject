@@ -32,7 +32,7 @@
 		) (#{page}-1)*#{limit},#{limit}
 	</select>
 
-	<select id="findAllByType" resultMap="BaseResultMap">
+	<select id="findAllByQType" resultMap="BaseResultMap">
 		select * from tiankong t where t.test_question_id in(
 		select test_question_id from test_questions where
 		test_question_name=#{typename}
