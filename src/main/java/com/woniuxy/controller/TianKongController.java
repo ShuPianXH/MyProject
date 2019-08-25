@@ -1,8 +1,6 @@
 package com.woniuxy.controller;
 
 import com.woniuxy.pojo.Tiankong;
-import com.woniuxy.pojo.PageBean;
-import com.woniuxy.pojo.Tiankong;
 import com.woniuxy.service.ITiankongService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
