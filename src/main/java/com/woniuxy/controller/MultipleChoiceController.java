@@ -25,9 +25,9 @@ public class MultipleChoiceController {
 	private MultipleChoiceServiceImpl multipleChoiceServiceImpl;
 	
 	@RequestMapping("findByQType")
-	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit,String typename) {
 		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByQType(typename);
-		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, page, limit);
+		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, (page-1)*limit, limit);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("code",0);
 		map.put("msg","");
@@ -37,9 +37,9 @@ public class MultipleChoiceController {
 	}
 	
 	@RequestMapping("findByType")
-	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename) {
+	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit,String typename) {
 		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByType(typename);
-		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, page, limit);
+		List<MultipleChoice> data = multipleChoiceServiceImpl.findByQType(typename, (page-1)*limit, limit);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("code",0);
 		map.put("msg","");
@@ -49,9 +49,9 @@ public class MultipleChoiceController {
 	}
 	
 	@RequestMapping("findAll")
-	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit) {
+	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit) {
 		List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAll();
-		List<MultipleChoice> data = multipleChoiceServiceImpl.findByPage(page,limit);
+		List<MultipleChoice> data = multipleChoiceServiceImpl.findByPage((page-1)*limit,limit);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("code",0);
 		map.put("msg","");
@@ -61,9 +61,9 @@ public class MultipleChoiceController {
 	}
 	
 	@RequestMapping("/findByName")
-    public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String name){
+    public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit, String name){
         List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByName(name);
-        List<MultipleChoice> data = multipleChoiceServiceImpl.findByName(name, page, limit);
+        List<MultipleChoice> data = multipleChoiceServiceImpl.findByName(name, (page-1)*limit, limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
@@ -73,9 +73,9 @@ public class MultipleChoiceController {
     }
 	
 	@RequestMapping("/findByTwo")
-    public @ResponseBody Map<String,Object> findByTwo(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String typename,String typename2){
+    public @ResponseBody Map<String,Object> findByTwo(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit, String typename,String typename2){
         List<MultipleChoice> countdata = multipleChoiceServiceImpl.findAllByTwo(typename,typename2);
-        List<MultipleChoice> data = multipleChoiceServiceImpl.findByTwo(typename,typename2, page, limit);
+        List<MultipleChoice> data = multipleChoiceServiceImpl.findByTwo(typename,typename2, (page-1)*limit, limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");

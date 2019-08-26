@@ -46,10 +46,10 @@
 	</select>
 	
 	<select id="findAllByName" resultMap="BaseResultMap">
-		SELECT * FROM jianda j WHERE j.title LIKE concat("%",#{name},"%")
+		SELECT * FROM jianda j WHERE j.title LIKE #{name}
 	</select>
 	<select id="findByName" resultMap="BaseResultMap">
-		SELECT * FROM jianda  WHERE title LIKE  concat("%",#{name},"%") limit #{page},#{limit}
+		SELECT * FROM jianda j WHERE j.title LIKE #{name} limit #{page},#{limit}
 	</select>
 	
 	<select id="findAllByTwo" resultMap="BaseResultMap">
