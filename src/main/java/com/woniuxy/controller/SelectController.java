@@ -52,7 +52,7 @@ public class SelectController {
 //            countdata = trueOrFalseServiceImpl.findAllByQType(coursename);
 //            data =  trueOrFalseServiceImpl.findByQType(coursename, page, limit);
         }else if ("简答题".equals(Qtype)) {
-           countdata = jiandaServiceImpl.findAll();
+           countdata = jiandaServiceImpl.findAllByName(coursename);
            data = jiandaServiceImpl.findByName(coursename,page,limit);
         }
         System.out.println(page+"   "+limit);
