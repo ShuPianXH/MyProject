@@ -16,112 +16,125 @@
 </head>
 
 <body>
-<div id="top">
-    <form class="layui-form" action="">
-        <div style="padding: 15px;">
-            <div class="layui-form-item">
-                <label class="layui-form-label">输入框</label>
-                <div class="layui-input-block">
-                    <input type="text" name="title" required  lay-verify="required" placeholder="请输题目中的关键字" autocomplete="off" class="layui-input">
-                </div>
-            </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">科目类型</label>
-                <div class="layui-input-block">
-                    <select name="city" lay-verify="required">
-                        <option value=""></option>
-                        <option value="0">Java</option>
-                        <option value="1">C#</option>
-                        <option value="2">C</option>
-                        <option value="3">Python</option>
-                        <option value="4">前端</option>
-                        <option value="4">测试</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">题型选择</label>
-                <div class="layui-input-block">
-                    <input type="checkbox" name="like[write]" title="选择" checked>
-                    <input type="checkbox" name="like[read]" title="填空" >
-                    <input type="checkbox" name="like[dai]" title="判断">
-                    <input type="checkbox" name="like[dai]" title="简答">
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
+<form class="layui-form" action="/select/findByName">
+    <div class="layui-form layui-form-pane demoTable">
+        <div class="layui-form-item">
+            <label class="layui-form-label">题目名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="coursename" required lay-verify="required" placeholder="请输入题目名称"
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
-    </form>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择框</label>
+            <div class="layui-input-block">
+                <select name="kemu" lay-verify="required">
+                    <option value=""></option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="前端">前端</option>
+                    <option value="C">C#</option>
+                    <option value="C++">C++</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block">
+                <input type="radio" name="Qtype" value="选择题" title="选择题" checked>
+                <input type="radio" name="Qtype" value="判断题" title="判断题">
+                <input type="radio" name="Qtype" value="填空题" title="填空题">
+                <input type="radio" name="Qtype" value="简答题" title="简答题">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <%--<button class="layui-btn " data-type="reload" lay-submit lay-filter="formDemo">查询</button>--%>
+                <button class="layui-btn " lay-submit lay-filter="formDemo">查询</button>
+                <a href="back">
+                    <button class="layui-btn layui-btn-primary " type="reset" id="reset">重置</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
 </div>
-
-
 
 <table class="layui-hide" id="test"></table>
 <script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
 
-    });
-    //Demo
-    layui.use('form', function(){
-        var form = layui.form;
-
-//监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
-            return false;
-        });
-    });
-    $(function(){
-        //获取src值
-        $(".main_left a").on("click",function(){
-            var address =$(this).attr("data-src");
-            $("iframe").attr("src",address);
-        });
-        //一下代码是根据窗口高度在设置iframe的高度
-        var frame = $("#aa");
-
-        var frameheight = $(window).height();
-        console.log(frameheight);
-        frame.css("height",frameheight);
-    });
-        //分页
-    layui.use('table', function(){
+    //分页
+    layui.use('table', function () {
         var table = layui.table;
-
         table.render({
             elem: '#test'
-            ,url:'/tiankong/findAll'
-            ,limit:5
-            ,startByZero:0
-            ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+            , url: '/Jianda/findAll'
+            , limit: 5
+            , startByZero: 0
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                 layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-                ,curr: 1 //设定初始在第 5 页
-                ,groups: 10 //只显示 1 个连续页码
-                ,first: true //不显示首页
-                ,last: true //不显示尾页
-
+                , curr: 1 //设定初始在第 5 页
+                , groups: 10 //只显示 1 个连续页码
+                , first: true //不显示首页
+                , last: true //不显示尾页
             }
-            ,cols: [[
-                {field:'title', title: '题目', sort: true}
-                ,{field:'option1', title: '选项一', sort: true}
-                ,{field:'option2', title: '选项二', sort: true}
-                ,{field:'option3', title: '选项三', sort: true}
-                ,{field:'option4', title: '选项四',sort: true}
-                ,{field:'answer', title: '正确答案', sort: true}
-                ,{field:'typeid', title: '科目', sort: true}
-                ,{field:'testQuestionId', title: '题型',sort: true}
+            , cols: [[
+                {field: 'title', title: '题目', sort: true}
+                , {field: 'option1', title: '选项一', sort: true}
+                , {field: 'option2', title: '选项二', sort: true}
+                , {field: 'option3', title: '选项三', sort: true}
+                , {field: 'option4', title: '选项四', sort: true}
+                , {field: 'answer', title: '正确答案', sort: true}
+                , {field: 'typeid', title: '科目', sort: true}
+                , {field: 'testQuestionId', title: '题型', sort: true}
             ]]
-
+            ,id: 'testReload'
         });
+        layui.use('form', function () {
+            var form = layui.form;
+            form.on('submit(formDemo)', function (data) {
+                var formData = data.field;
+                var coursename = formData.coursename,
+                    kemu = formData.kemu,
+                    url=formData.url,
+                    Qtype = formData.Qtype;
+                //执行重载
+                table.reload('testReload',{
+                    limit: 5
+                    , startByZero: 0
+                    , url: '/select/findByName',//后台做模糊搜索接口路径
+                    page: {
+                        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                        , curr: 1 //设定初始在第 5 页
+                        , groups: 10 //只显示 1 个连续页码
+                        , first: true //不显示首页
+                        , last: true //不显示尾页
+                    }
+                    , where: {//这里传参  向后台
+                        coursename: coursename,
+                        kemu: kemu,
+                        Qtype: Qtype
+                        //可传多个参数到后台...  ，分隔
+                    }
+                    , method: 'post'
+                    , cols: [[
+                        {field: 'title', title: '题目', sort: true}
+                        , {field: 'option1', title: '选项一', sort: true}
+                        , {field: 'option2', title: '选项二', sort: true}
+                        , {field: 'option3', title: '选项三', sort: true}
+                        , {field: 'option4', title: '选项四', sort: true}
+                        , {field: 'answer', title: '正确答案', sort: true}
+                        , {field: 'typeid', title: '科目', sort: true}
+                        , {field: 'testQuestionId', title: '题型', sort: true}
+                    ]]
+                });
+                return false;//false：阻止表单跳转  true：表单跳转
+            });
+        });
+
     });
 </script>
 </body>

@@ -16,7 +16,7 @@ public interface JiandaMapper {
     List<Jianda> findByQType(String typename,Integer page,Integer limit);
     
     List<Jianda> findAllByName(String name);
-    List<Jianda> findByName(String name, Integer page,Integer limit);
+    List<Jianda> findByName(String name,Integer page,Integer limit);
     
     List<Jianda> findAllByTwo(String typename,String typename2);
     List<Jianda> findByTwo(String typename,String typename2,Integer page, Integer limit);

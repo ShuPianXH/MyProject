@@ -17,14 +17,12 @@ public class jiandaServiceImpl implements IJianDaService {
     @Override
     public List<Jianda> findAll() {
         List<Jianda> list = jiandaMapper.findAll();
-        System.out.println(list.size());
         return jiandaMapper.findAll();
     }
 
     @Override
     public List<Jianda> findByPage(Integer page,Integer limit) {
         List<Jianda> list = jiandaMapper.findByPage(page,limit);
-        System.out.println(list.size());
         return jiandaMapper.findByPage(page,limit);
     }
 
@@ -75,12 +73,15 @@ public class jiandaServiceImpl implements IJianDaService {
 	@Override
 	public List<Jianda> findAllByName(String name) {
 		// TODO Auto-generated method stub
+		List l = jiandaMapper.findAllByName(name);
+
 		return jiandaMapper.findAllByName(name);
 	}
 
 	@Override
 	public List<Jianda> findByName(String name, Integer page, Integer limit) {
 		// TODO Auto-generated method stub
+		System.out.println(name+"  "+page+limit);
 		return jiandaMapper.findByName(name, page, limit);
 	}
 

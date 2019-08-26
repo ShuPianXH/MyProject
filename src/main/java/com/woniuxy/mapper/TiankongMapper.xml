@@ -18,7 +18,7 @@
   </select>
 
   <select id="findByPage" resultMap="BaseResultMap">
-    SELECT * FROM tiankong LIMIT (#{page}-1)*#{limit},#{limit}
+    SELECT * FROM tiankong LIMIT #{page},#{limit}
   </select>
   
   <select id="findAllByType" resultMap="BaseResultMap">
@@ -29,7 +29,7 @@
 	<select id="findByType" resultMap="BaseResultMap">
 		select * from tiankong t where t.typeid in(
 		select typeid from question_type where typename=#{typename}
-		) (#{page}-1)*#{limit},#{limit}
+		) #{page},#{limit}
 	</select>
 
 	<select id="findAllByQType" resultMap="BaseResultMap">
@@ -42,14 +42,14 @@
 		select * from tiankong t where t.test_question_id in(
 		select test_question_id from test_questions where
 		test_question_name=#{typename}
-		) (#{page}-1)*#{limit},#{limit}
+		) #{page},#{limit}
 	</select>
   
   <select id="findAllByName" resultMap="BaseResultMap">
 		SELECT * FROM tiankong t WHERE t.title LIKE #{name}
 	</select>
 	<select id="findByName" resultMap="BaseResultMap">
-		SELECT * FROM tiankong t WHERE t.title LIKE #{name} limit (#{page}-1)*#{limit},#{limit}
+		SELECT * FROM tiankong t WHERE t.title LIKE #{name} limit #{page},#{limit}
 	</select>
 	
 	<select id="findAllByTwo" resultMap="BaseResultMap">
@@ -64,7 +64,7 @@
 		select typeid from question_type where typename=#{typename}
 		) and t.test_question_id in (
 		select test_question_id from test_question where test_question_name=#{typename2}
-		) limit (#{page}-1)*#{limit},#{limit}
+		) limit #{page},#{limit}
 	</select>
   
   <sql id="Example_Where_Clause">
