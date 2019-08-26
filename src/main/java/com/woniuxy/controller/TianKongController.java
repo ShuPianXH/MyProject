@@ -20,10 +20,10 @@ public class TianKongController {
 	private ITiankongService tiankongServiceImpl;
 
 	@RequestMapping("findByQType")
-	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue = "0") int page,
+	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "5") int limit, String typename) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAllByQType(typename);
-		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, page, limit);
+		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -33,10 +33,10 @@ public class TianKongController {
 	}
 
 	@RequestMapping("findByType")
-	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue = "0") int page,
+	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "5") int limit, String typename) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAllByType(typename);
-		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, page, limit);
+		List<Tiankong> data = tiankongServiceImpl.findByQType(typename, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -46,10 +46,10 @@ public class TianKongController {
 	}
 
 	@RequestMapping("findAll")
-	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue = "0") int page,
+	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "5") int limit) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAll();
-		List<Tiankong> data = tiankongServiceImpl.findByPage(page, limit);
+		List<Tiankong> data = tiankongServiceImpl.findByPage((page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -59,9 +59,9 @@ public class TianKongController {
 	}
 
 	@RequestMapping("/findByName")
-	public @ResponseBody Map<String, Object> findByName(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String name) {
+	public @ResponseBody Map<String, Object> findByName(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit, String name) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAllByName(name);
-		List<Tiankong> data = tiankongServiceImpl.findByName(name, page, limit);
+		List<Tiankong> data = tiankongServiceImpl.findByName(name, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -71,9 +71,9 @@ public class TianKongController {
 	}
 	
 	@RequestMapping("/findByTwo")
-	public @ResponseBody Map<String, Object> findByTwo(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String typename,String typename2) {
+	public @ResponseBody Map<String, Object> findByTwo(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit, String typename,String typename2) {
 		List<Tiankong> countdata = tiankongServiceImpl.findAllByTwo(typename,typename2);
-		List<Tiankong> data = tiankongServiceImpl.findByTwo(typename,typename2, page, limit);
+		List<Tiankong> data = tiankongServiceImpl.findByTwo(typename,typename2, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");

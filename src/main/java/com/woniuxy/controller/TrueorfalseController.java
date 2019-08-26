@@ -23,9 +23,9 @@ public class TrueorfalseController {
 	private ITrueOrFalseService trueOrFalseServiceImpl;
 
 	@RequestMapping("findByQType")
-	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String typename) {
+	public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit, String typename) {
 		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAllByQType(typename);
-		List<Trueorfalse> data = trueOrFalseServiceImpl.findByQType(typename, page, limit);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByQType(typename, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -35,9 +35,9 @@ public class TrueorfalseController {
 	}
 
 	@RequestMapping("findByType")
-	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String typename) {
+	public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit, String typename) {
 		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAllByType(typename);
-		List<Trueorfalse> data = trueOrFalseServiceImpl.findByQType(typename, page, limit);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByQType(typename, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -47,9 +47,9 @@ public class TrueorfalseController {
 	}
 
 	@RequestMapping("findAll")
-	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit) {
+	public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit) {
 		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAll();
-		List<Trueorfalse> data = trueOrFalseServiceImpl.findByPage(page, limit);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByPage((page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -59,9 +59,9 @@ public class TrueorfalseController {
 	}
 
 	@RequestMapping("/findByName")
-	public @ResponseBody Map<String, Object> findByName(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String name) {
+	public @ResponseBody Map<String, Object> findByName(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit, String name) {
 		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAllByName(name);
-		List<Trueorfalse> data = trueOrFalseServiceImpl.findByName(name, page, limit);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByName(name, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");
@@ -71,9 +71,9 @@ public class TrueorfalseController {
 	}
 	
 	@RequestMapping("/findByTwo")
-	public @ResponseBody Map<String, Object> findByTwo(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int limit, String typaname,String typename2) {
+	public @ResponseBody Map<String, Object> findByTwo(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "5") int limit, String typaname,String typename2) {
 		List<Trueorfalse> countdata = trueOrFalseServiceImpl.findAllByTwo(typaname,typename2);
-		List<Trueorfalse> data = trueOrFalseServiceImpl.findByTwo(typaname,typename2, page, limit);
+		List<Trueorfalse> data = trueOrFalseServiceImpl.findByTwo(typaname,typename2, (page-1)*limit, limit);
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("code", 0);
 		map.put("msg", "");

@@ -22,9 +22,9 @@ public class JiandaController {
 
     @RequestMapping("/findByType")
     //按科目
-    public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename){
+    public @ResponseBody Map<String,Object> findByType(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit,String typename){
     	List<Jianda> countdata = jiandaServiceImpl.findAllByType(typename);
-        List<Jianda> data = jiandaServiceImpl.findByType(typename,page,limit);
+        List<Jianda> data = jiandaServiceImpl.findByType(typename,(page-1)*limit,limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
@@ -35,9 +35,9 @@ public class JiandaController {
 
     @RequestMapping("/findByQType")
     //按知识点
-    public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit,String typename){
+    public @ResponseBody Map<String,Object> findByQType(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit,String typename){
     	List<Jianda> countdata = jiandaServiceImpl.findAllByQType(typename);
-        List<Jianda> data = jiandaServiceImpl.findByQType(typename,page,limit);
+        List<Jianda> data = jiandaServiceImpl.findByQType(typename,(page-1)*limit,limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
@@ -47,9 +47,9 @@ public class JiandaController {
     }
 
     @RequestMapping("/findAll")
-    public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit){
+    public @ResponseBody Map<String,Object> findAll(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit){
         List<Jianda> countdata = jiandaServiceImpl.findAll();
-        List<Jianda> data = jiandaServiceImpl.findByPage(page,limit);
+        List<Jianda> data = jiandaServiceImpl.findByPage((page-1)*limit,limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
@@ -59,9 +59,9 @@ public class JiandaController {
     }
 
     @RequestMapping("/findByName")
-    public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String name){
+    public @ResponseBody Map<String,Object> findByName(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit, String name){
         List<Jianda> countdata = jiandaServiceImpl.findAllByName(name);
-        List<Jianda> data = jiandaServiceImpl.findByName(name, page, limit);
+        List<Jianda> data = jiandaServiceImpl.findByName(name, (page-1)*limit, limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
@@ -71,9 +71,9 @@ public class JiandaController {
     }
     
     @RequestMapping("/findByTwo")
-    public @ResponseBody Map<String,Object> findByTwo(@RequestParam(defaultValue="0")int page, @RequestParam(defaultValue="5")int limit, String typename, String typename2){
+    public @ResponseBody Map<String,Object> findByTwo(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5")int limit, String typename, String typename2){
         List<Jianda> countdata = jiandaServiceImpl.findAllByTwo(typename,typename2);
-        List<Jianda> data = jiandaServiceImpl.findByTwo(typename,typename2, page, limit);
+        List<Jianda> data = jiandaServiceImpl.findByTwo(typename,typename2, (page-1)*limit, limit);
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code",0);
         map.put("msg","");
