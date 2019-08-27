@@ -5,7 +5,7 @@ spring:
   mvc:
     view:
       prefix: /
-      suffix: .jsp
+      suffix: .html
   datasource: 
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://39.98.72.31:3306/prj9?characterEncoding=UTF-8
